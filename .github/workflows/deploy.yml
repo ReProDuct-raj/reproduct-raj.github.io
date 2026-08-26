@@ -31,20 +31,22 @@ jobs:
           token: ${{ secrets.PRIVATE_REPO_TOKEN }}
           path: private-docs
 
-      # 3. Process the files, move them, and create an index catalog
+      # 3. Process the files, move them into flutterPreparation, and create an index catalog
+      # এখানে পাথ পরিবর্তন করে main-site/flutterPreparation/docs/ করা হয়েছে
       - name: Setup and Move Files
         run: |
-          # Create a sub-folder in your public website structure
-          mkdir -p main-site/docs/
+          # Create the docs sub-folder inside flutterPreparation structure
+          mkdir -p main-site/flutterPreparation/docs/
           
           # Copy the .md files out of the secure private temporary directory
-          cp -r private-docs/. main-site/docs/
+          cp -r private-docs/. main-site/flutterPreparation/docs/
 
           # DYNAMIC GENERATION: Find all .md files and build a JSON list for JavaScript
-          cd main-site/docs
+          cd main-site/flutterPreparation/docs
           find . -name "*.md" | sed 's|^\./||' | jq -R -s 'split("\n") | map(select(length > 0))' > files-index.json
 
-      # 4. (Optional) Convert MD files or prepare static deployment artifact
+      # 4. Upload Finished Site Artifact
+      # সম্পূর্ণ main-site ফোল্ডার আপলোড হবে যাতে flutterPreparation ফোল্ডারটি অক্ষুণ্ণ থাকে
       - name: Upload Finished Site Artifact
         uses: actions/upload-pages-artifact@v3
         with:

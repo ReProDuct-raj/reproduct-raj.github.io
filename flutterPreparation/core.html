@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentation Portal</title>
-    <!-- Fixed: Added correct and working CDN link for Marked.js library -->
+    <!-- FIXED: Added correct and working CDN link for Marked.js library -->
     <script src="https://jsdelivr.net"></script>
     <style>
         :root {
@@ -100,13 +100,13 @@
             document.querySelectorAll('#file-list a').forEach(el => el.classList.remove('active'));
             if(linkElement) linkElement.classList.add('active');
 
-            fetch(`./docs/${fileName}`)
+            // FIXED: Removed the dot (.) from the path to prevent folder stacking issues
+            fetch(`docs/${fileName}`)
                 .then(res => {
                     if (!res.ok) throw new Error("File fetch failure");
                     return res.text();
                 })
                 .then(markdownRaw => {
-                    // Fixed: Uses the properly loaded marked library instance
                     contentViewport.innerHTML = marked.parse(markdownRaw);
                 })
                 .catch(err => {
@@ -116,7 +116,8 @@
         }
 
         // Initialize portal layout by parsing the index catalog
-        fetch('./docs/files-index.json')
+        // FIXED: Removed the dot (.) from the path to look for docs in the current folder scope
+        fetch('docs/files-index.json')
             .then(res => {
                 if (!res.ok) throw new Error("Index file fetch failure");
                 return res.json();

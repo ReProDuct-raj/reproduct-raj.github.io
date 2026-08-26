@@ -28,7 +28,7 @@ jobs:
           token: ${{ secrets.PRIVATE_REPO_TOKEN }}
           path: private-docs
 
-      # 3. Process the files and move them into the deploy folder
+      # 3. Process the files, move them, and create an index catalog
       - name: Setup and Move Files
         run: |
           # Create a sub-folder in your public website structure
@@ -36,6 +36,11 @@ jobs:
           
           # Copy the .md files out of the secure private temporary directory
           cp -r private-docs/. main-site/docs/
+
+          # DYNAMIC GENERATION: Find all .md files and build a JSON list for JavaScript
+          cd main-site/docs
+          find . -name "*.md" | sed 's|^\./||' | jq -R -s 'split("\n") | map(select(length > 0))' > files-index.json
+
 
       # 4. (Optional) Convert MD files or prepare static deployment artifact
       - name: Upload Finished Site Artifact

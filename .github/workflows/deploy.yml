@@ -12,6 +12,9 @@ permissions:
 
 jobs:
   build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       # 1. Checkout the current Public GitHub Pages repository
@@ -24,7 +27,7 @@ jobs:
       - name: Checkout Private MD Repo
         uses: actions/checkout@v4
         with:
-          repository: ReProDuct-raj/PreparationFlutterPackagesAndIMPL # Update this line
+          repository: ReProDuct-raj/PreparationFlutterPackagesAndIMPL
           token: ${{ secrets.PRIVATE_REPO_TOKEN }}
           path: private-docs
 
@@ -41,7 +44,6 @@ jobs:
           cd main-site/docs
           find . -name "*.md" | sed 's|^\./||' | jq -R -s 'split("\n") | map(select(length > 0))' > files-index.json
 
-
       # 4. (Optional) Convert MD files or prepare static deployment artifact
       - name: Upload Finished Site Artifact
         uses: actions/upload-pages-artifact@v3
@@ -50,4 +52,5 @@ jobs:
 
       # 5. Push the build results live to GitHub Pages
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4

@@ -1,0 +1,48 @@
+name: Fetch Private MD and Deploy Pages
+
+on:
+  push:
+    branches: [ "main" ] # Triggers build when you update the Pages repo
+  workflow_dispatch:     # Allows you to manually trigger a sync via the UI button
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Checkout the current Public GitHub Pages repository
+      - name: Checkout Public Pages Repo
+        uses: actions/checkout@v4
+        with:
+          path: main-site
+
+      # 2. Securely pull the private repository using your PAT token
+      - name: Checkout Private MD Repo
+        uses: actions/checkout@v4
+        with:
+          repository: ReProDuct-raj/PreparationFlutterPackagesAndIMPL # Update this line
+          token: ${{ secrets.PRIVATE_REPO_TOKEN }}
+          path: private-docs
+
+      # 3. Process the files and move them into the deploy folder
+      - name: Setup and Move Files
+        run: |
+          # Create a sub-folder in your public website structure
+          mkdir -p main-site/docs/
+          
+          # Copy the .md files out of the secure private temporary directory
+          cp -r private-docs/. main-site/docs/
+
+      # 4. (Optional) Convert MD files or prepare static deployment artifact
+      - name: Upload Finished Site Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: main-site
+
+      # 5. Push the build results live to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

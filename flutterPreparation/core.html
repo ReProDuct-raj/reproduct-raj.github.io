@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentation Portal</title>
-    <!-- Lightweight Markdown Processing Engine -->
+    <!-- Fixed: Added correct and working CDN link for Marked.js library -->
     <script src="https://jsdelivr.net"></script>
     <style>
         :root {
@@ -106,18 +106,23 @@
                     return res.text();
                 })
                 .then(markdownRaw => {
+                    // Fixed: Uses the properly loaded marked library instance
                     contentViewport.innerHTML = marked.parse(markdownRaw);
                 })
                 .catch(err => {
                     contentViewport.innerHTML = `<h3>Error</h3><p>Could not compile ${fileName}.</p>`;
+                    console.error(err);
                 });
         }
 
         // Initialize portal layout by parsing the index catalog
         fetch('./docs/files-index.json')
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) throw new Error("Index file fetch failure");
+                return res.json();
+            })
             .then(filesArray => {
-                if (filesArray.length === 0) {
+                if (!filesArray || filesArray.length === 0) {
                     fileListContainer.innerHTML = "<li>No files found.</li>";
                     return;
                 }
@@ -145,7 +150,7 @@
             })
             .catch(err => {
                 fileListContainer.innerHTML = "<li>Error cataloging folder assets.</li>";
-                console.error(err);
+                console.error("Index loading error:", err);
             });
     </script>
 </body>

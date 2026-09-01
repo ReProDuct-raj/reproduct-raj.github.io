@@ -263,8 +263,8 @@
           <span class="en">Privacy Policy</span>
         </h1>
         <p class="subtitle">
-          <span class="bn">আমার বাবু • সর্বশেষ আপডেট: আগস্ট ২০২৬</span>
-          <span class="en">Amar Babu • Last updated: August 2026</span>
+          <span class="bn">আমার বাবু • সর্বশেষ আপডেট: সেপ্টেম্বর ২০২৬</span>
+          <span class="en">Amar Babu • Last updated: September 2026</span>
         </p>
       </div>
       <div class="lang-toggle" role="group" aria-label="Language">
@@ -371,23 +371,48 @@
         </ul>
       </section>
 
-      <!-- ── 4. Data Security ─────────────────────────────────────────────── -->
+      <!-- ── 4. Crash & Error Reporting (Firebase Crashlytics) ─────────────── -->
+      <section class="card">
+        <h2 class="section-title">
+          <span class="emoji">🛠️</span>
+          <span class="bn">৪. ক্র্যাশ ও এরর রিপোর্টিং (Firebase Crashlytics)</span>
+          <span class="en">4. Crash &amp; Error Reporting (Firebase Crashlytics)</span>
+        </h2>
+        <p class="bn">অ্যাপের স্থায়িত্ব উন্নত করতে এবং বাগ ঠিক করতে আমরা Google Firebase Crashlytics ব্যবহার করি। অ্যাপটি ক্র্যাশ করলে বা কোনো গুরুতর এরর ঘটলে, Crashlytics স্বয়ংক্রিয়ভাবে একটি বেনামি (anonymous) এবং ব্যক্তিগত নয় এমন ক্র্যাশ রিপোর্ট সংগ্রহ করে।</p>
+        <p class="en">To improve app stability and fix bugs, we use Google Firebase Crashlytics. When the app crashes or encounters a serious error, Crashlytics automatically collects an anonymous, non-personal crash report.</p>
+        <ul class="content-list">
+          <li>
+            <p class="bn">এই রিপোর্টগুলোতে সাধারণত ডিভাইস মডেল, অ্যান্ড্রয়েড/আইওএস সংস্করণ, অ্যাপ সংস্করণ এবং ক্র্যাশের সময় কোডের অবস্থান (stack trace) থাকে।</p>
+            <p class="en">These reports typically include device model, Android/iOS version, app version, and the code location at the time of the crash (stack trace).</p>
+          </li>
+          <li>
+            <p class="bn">এই রিপোর্টগুলোতে আপনার নাম, ইমেইল, গর্ভাবস্থার তথ্য, দিনলিপির লেখা বা অন্য কোনো ব্যক্তিগত সামগ্রী থাকে না।</p>
+            <p class="en">These reports do not contain your name, email, pregnancy data, diary entries, or any other personal content.</p>
+          </li>
+          <li>
+            <p class="bn">Crashlytics কেবলমাত্র রিলিজ (প্রকাশিত) বিল্ডে সক্রিয় থাকে; অ্যাপের ডেভেলপমেন্ট ও পরীক্ষার সময় এটি বন্ধ থাকে। এই ডেটা শুধুমাত্র বাগ ঠিক করার কাজে ব্যবহৃত হয় এবং কোনো বাণিজ্যিক উদ্দেশ্যে তৃতীয় পক্ষের সাথে শেয়ার করা হয় না।</p>
+            <p class="en">Crashlytics is only active in release builds; it is disabled during development and testing. This data is used solely for fixing bugs and is never shared with any third party for commercial purposes.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ── 5. Data Security ─────────────────────────────────────────────── -->
       <section class="card">
         <h2 class="section-title">
           <span class="emoji">🔐</span>
-          <span class="bn">৪. ডেটা এনক্রিপশন এবং সুরক্ষা (Data Security)</span>
-          <span class="en">4. Data Encryption &amp; Security</span>
+          <span class="bn">৫. ডেটা এনক্রিপশন এবং সুরক্ষা (Data Security)</span>
+          <span class="en">5. Data Encryption &amp; Security</span>
         </h2>
         <p class="bn">আপনার সমস্ত ডেটা ইন্টারনেটের মাধ্যমে স্থানান্তরের সময় স্বয়ংক্রিয়ভাবে এনক্রিপ্টেড (Encrypted in transit) অবস্থায় যাতায়াত করে। আমরা ফায়ারবেসের স্ট্যান্ডার্ড সিকিউরিটি প্রোটোকল মেনে চলি যাতে আপনার ব্যক্তিগত তথ্য সম্পূর্ণ সুরক্ষিত থাকে।</p>
         <p class="en">All of your data is automatically encrypted while traveling over the internet (encrypted in transit). We follow Firebase's standard security protocols so that your personal information stays completely safe.</p>
       </section>
 
-      <!-- ── 5. Account & Data Deletion ───────────────────────────────────── -->
+      <!-- ── 6. Account & Data Deletion ───────────────────────────────────── -->
       <section class="card">
         <h2 class="section-title">
           <span class="emoji">🗑️</span>
-          <span class="bn">৫. অ্যাকাউন্ট এবং ডেটা মুছে ফেলার অধিকার (Account &amp; Data Deletion)</span>
-          <span class="en">5. Account &amp; Data Deletion Rights</span>
+          <span class="bn">৬. অ্যাকাউন্ট এবং ডেটা মুছে ফেলার অধিকার (Account &amp; Data Deletion)</span>
+          <span class="en">6. Account &amp; Data Deletion Rights</span>
         </h2>
         <p class="bn">গুগল প্লে স্টোরের পলিসি অনুযায়ী আমাদের অ্যাপে ব্যবহারকারীকে তার ডেটা সম্পূর্ণ মুছে ফেলার নিয়ন্ত্রণ দেওয়া হয়েছে:</p>
         <p class="en">In line with the Google Play Store policy, our app gives you full control over permanently deleting your data:</p>
@@ -403,12 +428,12 @@
         </ul>
       </section>
 
-      <!-- ── 6. Medical Disclaimer (highlighted) ──────────────────────────── -->
+      <!-- ── 7. Medical Disclaimer (highlighted) ──────────────────────────── -->
       <section class="card highlight">
         <h2 class="section-title">
           <span class="emoji">⚠️</span>
-          <span class="bn">৬. কোনো মেডিকেল ওয়ারেন্টি নেই (Medical Disclaimer)</span>
-          <span class="en">6. No Medical Warranty (Medical Disclaimer)</span>
+          <span class="bn">৭. কোনো মেডিকেল ওয়ারেন্টি নেই (Medical Disclaimer)</span>
+          <span class="en">7. No Medical Warranty (Medical Disclaimer)</span>
         </h2>
         <p class="bn">এই অ্যাপের সব উপাদান — দৈনিক বাবুর বার্তা, সাপ্তাহিক বেবি স্টোরি, ফলের সাইজের তথ্য, অনুভূতির গাইড এবং মাইলস্টোন নোট — শুধুমাত্র সাধারণ সচেতনতা ও বিনোদনের জন্য প্রদান করা হয়েছে।</p>
         <p class="en">All content in this app — daily baby messages, weekly baby stories, fruit-size information, feelings guides, and milestone notes — is provided for general awareness and entertainment only.</p>
@@ -416,12 +441,12 @@
         <p class="en">It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified doctor about any matter related to pregnancy or health.</p>
       </section>
 
-      <!-- ── 7. Contact Us ────────────────────────────────────────────────── -->
+      <!-- ── 8. Contact Us ────────────────────────────────────────────────── -->
       <section class="card">
         <h2 class="section-title">
           <span class="emoji">📧</span>
-          <span class="bn">৭. আমাদের সাথে যোগাযোগ (Contact Us)</span>
-          <span class="en">7. Contact Us</span>
+          <span class="bn">৮. আমাদের সাথে যোগাযোগ (Contact Us)</span>
+          <span class="en">8. Contact Us</span>
         </h2>
         <p class="bn">এই গোপনীয়তা নীতি বা অ্যাপ সম্পর্কে যেকোনো জিজ্ঞাসা বা সহায়তার জন্য সরাসরি ডেভেলপারের সাথে যোগাযোগ করতে পারেন:</p>
         <p class="en">For any questions or support regarding this privacy policy or the app, you can contact the developer directly:</p>
